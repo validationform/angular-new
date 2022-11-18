@@ -36,8 +36,8 @@ export class ShopComponent implements OnInit {
 
   addCart(shopVar:any){
     this.cartService.addCart(shopVar);
-    //this.a = this.cartService.cartItem;
-    //this.a =this.a + 1;
+    this.a = this.cartService.cartItem;
+    this.a =this.a + 1;
   }
 
   onToggle(): void {

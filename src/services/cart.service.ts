@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable,Input,Output,EventEmitter} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { cart } from 'src/app/models/shop';
 import { shopData } from 'src/app/models/shop';
+import { outputAst } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class CartService {
   a: number = 0;
   public productList = new BehaviorSubject<any>([]);
   public search = new BehaviorSubject<string>('');
-
+  @Output() public notify : EventEmitter<number> = new EventEmitter<number>();
   constructor(private http: HttpClient) {}
 
   onToggle(): void {
@@ -28,7 +29,7 @@ export class CartService {
   addCart(shopVar: any) {
     console.log('id=>' + shopVar.id);
     this.cartItem = this.cartItem + shopVar.qty;
-    //this.notify.emit(this.cartItem)
+    this.notify.emit(this.cartItem)
 
     if (this.cartArray[this.a] == null) {
       this.cartArray.push({

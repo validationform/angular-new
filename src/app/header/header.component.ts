@@ -10,14 +10,13 @@ import { CartService } from 'src/services/cart.service';
 })
 export class HeaderComponent implements OnInit {
   cartItemValue: number;
-  //@Input()  public a1:number;
+  //@Input()  public a1: number;
   img = '../../assets/flipkart-plus_8d85f4.png';
 
   constructor(private router: Router, private cartService: CartService) {}
 
   ngOnInit(): void {
     this.cartItemValue = this.cartService.cartItem;
-    
     //this.cartService.addCart(shopVar);
    
   }
@@ -31,3 +30,4 @@ export class HeaderComponent implements OnInit {
     .subscribe(res=>{
       this.totalItem = res.length;
     }) */
+//https://scrumguides.org/
